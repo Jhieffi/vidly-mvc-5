@@ -1,0 +1,62 @@
+﻿@model IEnumerable<VidlyExercise.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    .mainTitle {
+        font-weight: bold;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .empty-list-customer{
+        font-weight: bold;
+        color: #e31414;
+    }
+
+</style>
+
+<h2 class="mainTitle">Customers</h2>
+
+@if (!Model.Any())
+{
+    <p class="empty-list-customer"> We didnt't find any customer :( </p>
+}
+else
+{
+    <table>
+
+        <tr>
+            <th>
+                Customer
+            </th>
+        </tr>
+
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <th>@Html.ActionLink(@customer.Name, "Detail", new { id = customer.Id })</th>
+            </tr>
+        }
+
+    </table>
+}
+
+

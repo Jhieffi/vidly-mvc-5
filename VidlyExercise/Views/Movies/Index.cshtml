@@ -1,0 +1,64 @@
+﻿@model  IEnumerable<VidlyExercise.Models.Movie>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    .mainTitle {
+        font-weight: bold;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .empty-list-customer{
+        font-weight: bold;
+        color: #e31414;
+    }
+
+</style>
+
+<h2 class="mainTitle">Movies</h2>
+
+
+@if (!Model.Any())
+{
+    <p class="empty-list-customer"> We didnt't find any movie :( </p>
+}
+else
+{
+    <table>
+        <tr>
+            <th>
+                Movie
+            </th>
+        </tr>
+
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Name</td>
+            </tr>
+        }
+    </table>
+}
+
+
+
+
